@@ -1,8 +1,9 @@
 import React from "react";
 import leftsideimage from "../../assets/leftsideimage.png";
-import { FaFacebookF, FaGoogle } from 'react-icons/fa';
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
     return (
         <div className="w-full h-screen flex item-start bg-gradient-to-r from-black via-gray-700 to-gray-800">
             <div className=" left-screen relative w-50 h-full flex flex-col overflow-hidden">
@@ -37,13 +38,13 @@ const Login = () => {
                         <p className="text-lg font-quicksand text-white underline underline-offset-2 my-2 cursor-pointer ">Forgot Password?</p>
                     </div>
                     <div className="w-full flex flex-col  items-center justify-center">
-                        <button className="w-3/4 text-white my-20 bg-[#db6221] rounded-2xl py-3 text-center flex items-center justify-center text-3xl hover:bg-[#e6956a]">
+                        <button className="w-3/4 text-white my-20 bg-[#db6221] rounded-2xl py-3 text-center flex items-center justify-center text-3xl hover:bg-[#e6956a]" onClick={()=>navigate("/home")}>
                             Log In
                         </button>
                     </div>
 
                     <div className="w-full flex p-0 items-center justify-center ">
-                        <p className="text-lg font-quicksand text-white">Don't have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer">Sign up</span></p>
+                        <p className="text-lg font-quicksand text-white">Don't have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer"  onClick={()=>navigate("/registration")}>Sign up</span></p>
                     </div>
 
                 </div>

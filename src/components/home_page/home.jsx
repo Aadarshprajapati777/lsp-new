@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "./filter_dropdown/filter_dropdown";
 import ProviderCards from "./provider_cards/provider_cards";
+import UserData from "../../backend/firebase/user_data";
 
 
 import { FaEnvelope, FaMapMarked, FaSearch, FaUser, FaUserCircle } from "react-icons/fa";
@@ -68,7 +69,8 @@ function Home() {
 
                 </div>
             </div>
-            <ProviderCards />
+            {/* <ProviderCards /> */}
+            <UserData />
         </div>
     );
 };
