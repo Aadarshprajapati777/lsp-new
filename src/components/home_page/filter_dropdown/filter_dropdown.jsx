@@ -3,7 +3,11 @@ import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 function Dropdown({onSelectProfession}) {
     const [selectedFilter, setSelectedFilter] = useState('');
     const [isOpen, setIsOpen] = useState(false)
-    const filters = [{
+    const filters = [
+        {
+            "occupation": "All"
+        },
+        {
         "occupation": "Electrician"
     },
     {
@@ -12,9 +16,9 @@ function Dropdown({onSelectProfession}) {
     }, {
         "occupation": "Car Wash"
     },
-    {
-        "occupation": "All"
 
+    {
+        "occupation": "software Engineer"
     }
 ]
     const handleFilterClick = (item) => {

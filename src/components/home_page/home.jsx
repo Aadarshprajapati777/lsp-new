@@ -244,10 +244,14 @@ import hammerise from "../../assets/hammerise.png"
 import user_profile_image from "../../assets/userimage2.jpg"
 import { FaEdit } from 'react-icons/fa';
 import UserData from "../../backend/firebase/user_data";
+import {useNavigate} from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { app } from "../../backend/firebase/firebase_config";
 
 
 import { FaEnvelope, FaMapMarked, FaSearch, FaUser, FaUserCircle, FaArrowLeft } from "react-icons/fa";
 import { FaPhone, FaSignOutAlt } from "react-icons/fa";
+const auth = getAuth(app);
 
 
 function ScrollContainer({ children }) {
@@ -291,6 +295,7 @@ function Home() {
   const [showUser, setShowUser] = useState(false);
 
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         let timer;
@@ -397,6 +402,12 @@ function Home() {
         setShowMenu(false);
     };
 
+    const handleLogout = () => {    
+        auth.signOut().then(() => {
+navigate("/login")     });
+
+    };
+
 
     return (<div className="bg-gradient-to-r from-gray-900 to-gray-500 min-h-screen flex flex-col items-center">
         <ScrollContainer>
@@ -406,8 +417,10 @@ function Home() {
                     type="text"
                     placeholder="Search here..."
                     className="relative text-xl font-quicksand rounded-full py-2 pl-10 pr-4 bg-gray-900 text-black w-3/5 mr-4"
+                    onChange={handleSearchChange}   
+
                 />
-                <FaSearch className="relative right-[55px] top-[25px] transform -translate-y-1/2 text-gray-700 text-2xl" />
+                <FaSearch className="relative right-[55px] top-[25px] transform -translate-y-1/2 text-gray-700 text-2xl hover:text-[#fffffff]" onClick={handleSearch} />
                 <div>
                     {showSlider ? (
                         <div>
@@ -477,7 +490,7 @@ function Home() {
                         <p className="text-gray-400 text-md mt-2 font-quicksand">{bio}</p>
                     )}
                 </div>
-                <button className="mt-96 w-48 p-3 font-quicksand text-xl bg-[#e0dede] flex items-center justify-center font-bold rounded-lg hover:bg-primary">
+                <button className="mt-96 w-48 p-3 font-quicksand text-xl bg-[#e0dede] flex items-center justify-center font-bold rounded-lg hover:bg-primary" onClick={handleLogout}>
                     <FaSignOutAlt className="mr-2" />
                     Log Out
                 </button>

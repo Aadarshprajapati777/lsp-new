@@ -67,6 +67,7 @@ const Login = () => {
                     <input
   type="email"
   name="email"
+  placeholder="Email"
   value={loginData.email}
   onChange={handleLoginFormInput}
   className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
@@ -74,6 +75,7 @@ const Login = () => {
 <input
   type="password"
   name="password"
+  placeholder="Password"
   value={loginData.password}
   onChange={handleLoginFormInput}
   className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-2 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"

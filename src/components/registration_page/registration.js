@@ -90,7 +90,6 @@ function Registration() {
       !data.profession ||
       !data.email ||
       !data.pic
-      
     ) {
       alert("Please fill in all required fields");
       return;
@@ -139,7 +138,7 @@ function Registration() {
       alert("sign up Successful");
       writeUserData(data);
       createuser();
-      navigate("/");
+      navigate("/login");
     } else {
       alert("oops! something went wrong, please try again");
     }
@@ -161,8 +160,6 @@ function Registration() {
   const onSelectFilter = (filter) => {
     setData({ ...data, profession: filter });
   };
-
-  
 
   return (
     <div className="main_body relative h-screen w-screen">
@@ -231,7 +228,7 @@ function Registration() {
                   type="text"
                   name="contactNumber"
                   placeholder="Phone Number"
-                  className="bg-transparent my-1 h-[50px] w-[155px] rounded-lg border-b border-white bg-[#000000] px-4 py-5 font-quicksand text-sm text-white opacity-70 outline-none transition-transform duration-300 focus:scale-105 focus:outline-none"
+                  className="bg-transparent my-1 ml-2 h-[50px] w-[163px] rounded-lg border-b border-white bg-[#000000] px-4 py-5 font-quicksand text-sm text-white opacity-70 outline-none transition-transform duration-300 focus:scale-105 focus:outline-none"
                   onChange={handleRegistrationFormInput}
                   value={data.contactNumber}
                   required
@@ -290,7 +287,10 @@ function Registration() {
           <div className="mt-4 flex w-full items-center justify-center">
             <p className="text-md font-quicksand text-black">
               Already have an account?{" "}
-              <span className="cursor-pointer font-semibold underline underline-offset-2" onClick={()=>navigate("/")}>
+              <span
+                className="cursor-pointer font-semibold underline underline-offset-2"
+                onClick={() => navigate("/login")}
+              >
                 Sign in
               </span>
             </p>
