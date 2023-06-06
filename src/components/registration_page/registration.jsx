@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import registrationbg from "../../assets/regbg.jpeg";
 import Dropdown2 from './Dropdown/filter_dropdown';
 import ImageUpload from './ImageUpload/ImageUpload';
+import { useNavigate } from "react-router-dom";
 
-function Registration() {
+const Registration = () => {
     const [locationRequired, setLocationRequired] = useState(false);
+    const navigate = useNavigate();
 
     const handleLocationChange = () => {
         setLocationRequired(!locationRequired);
@@ -18,55 +20,55 @@ function Registration() {
                 style={{ backgroundImage: `url(${registrationbg})`, zIndex: 0 }}
             ></div>
             <div className="flex items-center justify-center h-full relative z-10">
-                <div className="h-[670px] w-[750px] bg-[#F1D6AC] bg-opacity-80  p-8 rounded-3xl shadow-lg flex flex-col">
-                    <h1 className="flex justify-center items-center font-quicksand text-4xl font-bold text-black">Sign Up</h1>
-                    <div className="border-4 w-20 border-black mx-auto my-3 rounded-lg" />
+                <div className="h-[970px] w-[1200px] bg-[#F1D6AC] bg-opacity-80  p-8 rounded-3xl shadow-lg flex flex-col">
+                    <h1 className="flex justify-center items-center font-quicksand text-5xl font-bold text-black">Sign Up</h1>
+                    <div className="border-4 w-20 border-black mx-auto my-6" />
                     <div className='flex'>
-                        <div className='flex ml-0 mx-auto flex-col justify-around mt-3'>
+                        <div className='flex ml-0 mx-auto flex-col'>
                             <input
                                 type="email"
                                 placeholder="Email"
                                 autoComplete="off"
-                                className=" w-[325px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                className="ml-10 w-[600px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
                             />
                             <input
                                 type="password"
                                 autoComplete="off"
                                 placeholder="Password"
-                                className=" w-[325px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                className="ml-10 w-[600px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
                             />
                             <input
                                 type="password"
                                 placeholder="Confirm Password"
-                                className="w-[325px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4  my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                className="ml-10 w-[600px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
                             />
-                            <div className="flex">
+                            <div className="flex ml-10">
                                 <input
                                     type="text"
                                     placeholder="Street"
-                                    className="w-[155px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                    className="w-[290px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105 mr-2"
                                 />
                                 <input
                                     type="text"
                                     placeholder="Area"
-                                    className="ml-2 w-[160px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                    className="w-[300px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105 mr-2"
                                 />
                             </div>
-                            <div className="flex ">
+                            <div className="flex ml-10">
                                 <input
                                     type="text"
                                     placeholder="District"
-                                    className="w-[155px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                    className="w-[290px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105 mr-2"
                                 />
                                 <input
                                     type="text"
                                     placeholder="State"
-                                    className="ml-2 w-[160px] h-[50px] bg-[#000000] opacity-70 text-sm font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-1 bg-transparent rounded-lg transition-transform duration-300 focus:scale-105"
+                                    className="w-[300px] bg-[#000000] opacity-70 text-lg font-quicksand text-white py-5 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
                                 />
                             </div>
 
                             <Dropdown2 />
-                            <div className="flex items-center mt-6 my-4">
+                            <div className="flex items-center ml-10 mt-6 my-4">
                                 <input
                                     type="checkbox"
                                     id="locationCheckbox"
@@ -74,16 +76,16 @@ function Registration() {
                                     checked={locationRequired}
                                     onChange={handleLocationChange}
                                 />
-                                <label htmlFor="locationCheckbox" className="ml-2 font-quicksand  font-bold text-md text-black">This product requires your location</label>
+                                <label htmlFor="locationCheckbox" className="ml-2 font-quicksand  font-bold text-xl text-black">This product requires your location</label>
                             </div>
                         </div>
                         <ImageUpload />
                     </div>
-                    <button className='mt-3 rounded-md w-2/5 h-[50px] mx-auto font-quicksand font-bold text-white bg-secondary opacity-80 text-2xl hover:bg-[#313131]'>
+                    <button className='rounded-lg w-1/2 h-[70px] mx-auto font-quicksand font-bold text-white bg-secondary opacity-80 text-4xl hover:bg-[#313131]'>
                         Register
                     </button>
                     <div className="w-full flex items-center justify-center mt-4">
-                        <p className="text-md font-quicksand text-black">Already have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer">Sign in</span></p>
+                        <p className="text-xl font-quicksand text-black">Already have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer" onClick={()=>navigate("/")}>Sign in</span></p>
                     </div>
 
                 </div>
