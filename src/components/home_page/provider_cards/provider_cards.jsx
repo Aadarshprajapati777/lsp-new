@@ -7,7 +7,7 @@ import { FaPhone } from "react-icons/fa";
 function ProviderCards(props) {
     return (
         <div className="group flex flex-col items-center">
-            <div className="relative flex w-[500px] h-[300px] font-quicksand bg-secondary rounded-3xl group-hover:h-[400px] duration-300 text-white text-3xl">
+            <div className="relative ml-10 mt-30 flex w-[500px] h-[300px] font-quicksand bg-secondary rounded-3xl group-hover:h-[400px] duration-300 text-white text-3xl">
                 <div className="expert_image absolute top-[-30%] w-[225px] h-[225px] bg-primary left-[26%] rounded-3xl">
                     <img
                         src={props.profile_image}
