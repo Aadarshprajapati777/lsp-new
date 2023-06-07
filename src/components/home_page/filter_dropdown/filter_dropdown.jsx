@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-function Dropdown() {
+function Dropdown({onSelectProfession}) {
     const [selectedFilter, setSelectedFilter] = useState('');
     const [isOpen, setIsOpen] = useState(false)
     const filters = [{
@@ -11,10 +11,16 @@ function Dropdown() {
 
     }, {
         "occupation": "Car Wash"
-    }]
+    },
+    {
+        "occupation": "All"
+
+    }
+]
     const handleFilterClick = (item) => {
         setSelectedFilter(item.occupation);
         setIsOpen(false);
+        onSelectProfession(item.occupation); // Pass the selected filter to the parent component
     };
     return (
         <div className="relative flex flex-col items-center w-[340px] rounded-lg">
