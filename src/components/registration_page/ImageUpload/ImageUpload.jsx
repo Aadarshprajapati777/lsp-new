@@ -5,21 +5,20 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 const ImageUpload = ({onSelectImage})=> {
   const [uploadedImage, setUploadedImage] = useState(null);
   const fileInputRef = useRef(null);
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-
+    onSelectImage(file);
+  
     reader.onloadend = () => {
       setUploadedImage(reader.result);
-      onSelectImage(reader.result);
     };
-
+  
     if (file) {
       reader.readAsDataURL(file);
     }
   };
-
+  
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };

@@ -83,11 +83,14 @@ function Registration() {
 
     if (
       !data.fullName ||
-      !data.phoneNumber ||
+      !data.contactNumber ||
       !data.address ||
       !data.password ||
       !data.confirmPassword ||
-      !data.profession
+      !data.profession ||
+      !data.email ||
+      !data.pic
+      
     ) {
       alert("Please fill in all required fields");
       return;
@@ -95,7 +98,6 @@ function Registration() {
 
     const {
       fullName,
-
       phoneNumber,
       address,
       email,
@@ -148,6 +150,19 @@ function Registration() {
   const handleLocationChange = () => {
     setLocationRequired(!locationRequired);
   };
+
+  // const handleImageChange = (e) => {
+  //   setData({ ...data, pic: e.target.files[0] });
+  // };
+  const onSelectImage = (file) => {
+    setData({ ...data, pic: file });
+  };
+
+  const onSelectFilter = (filter) => {
+    setData({ ...data, profession: filter });
+  };
+
+  
 
   return (
     <div className="main_body relative h-screen w-screen">
@@ -214,17 +229,17 @@ function Registration() {
                 />
                 <input
                   type="text"
-                  name="phoneNumber"
+                  name="contactNumber"
                   placeholder="Phone Number"
                   className="bg-transparent my-1 h-[50px] w-[155px] rounded-lg border-b border-white bg-[#000000] px-4 py-5 font-quicksand text-sm text-white opacity-70 outline-none transition-transform duration-300 focus:scale-105 focus:outline-none"
                   onChange={handleRegistrationFormInput}
-                  value={data.phoneNumber}
+                  value={data.contactNumber}
                   required
                 />
               </div>
 
-              {/* <Dropdown2 /> */}
-              <div className="flex">
+              <Dropdown2 onSelectFilter={onSelectFilter} />
+              {/* <div className="flex">
                 <select
                   name="profession"
                   onChange={handleRegistrationFormInput}
@@ -236,7 +251,7 @@ function Registration() {
                   <option value="architect">Architect</option>
                   <option value="babysitter">Babysitter</option>
                 </select>
-              </div>
+              </div> */}
 
               <div className="my-4 mt-6 flex items-center">
                 <input
@@ -254,8 +269,8 @@ function Registration() {
                 </label>
               </div>
             </div>
-            {/* <ImageUpload /> */}
-            <div>
+            <ImageUpload onSelectImage={onSelectImage} />
+            {/* <div>
               <h2>Upload image</h2>
               <input
                 type="file"
@@ -264,7 +279,7 @@ function Registration() {
                   setData({ ...data, pic: e.target.files[0] });
                 }}
               />
-            </div>
+            </div> */}
           </div>
           <button
             className="mx-auto mt-3 h-[50px] w-2/5 rounded-md bg-secondary font-quicksand text-2xl font-bold text-white opacity-80 hover:bg-[#313131]"
