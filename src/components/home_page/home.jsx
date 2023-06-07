@@ -96,14 +96,14 @@ function Home() {
         e.preventDefault();
         setSelectedProfession(search); 
         setShowUser(true);
-        alert("you searched for " + search);
+        // alert("you searched for " + search);
     };
 
 
 
     const onSelectProfession = (profession) => {
         setSelectedProfession(profession);
-        alert("you selected " + profession);
+        // alert("you selected " + profession);
         setShowUser(true);    
     };
     

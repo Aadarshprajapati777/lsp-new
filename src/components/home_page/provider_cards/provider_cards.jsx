@@ -28,11 +28,11 @@ function ProviderCards(props) {
                             <div className="border-2     w-40 border-white inline-block mx-auto my-7"></div>
                             <div className="flex items-center">
                                 <FaPhone className="mr-2 text-lg" />
-                                <p className="text-gray-300 text-lg">Contact</p>
+                                <p className="text-gray-300 text-lg">{props.contact}</p>
                             </div>
                             <div className="flex items-center mt-2">
                                 <FaEnvelope className="mr-2 text-lg" />
-                                <p className="text-gray-300 text-lg">Mail</p>
+                                <p className="text-gray-300 text-lg">{props.profession}</p>
                             </div>
                         </div>
                     </div>
