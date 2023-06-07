@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import leftsideimage from "../../assets/leftsideimage.png";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../backend/firebase/firebase_config";
+
+const auth = getAuth(app);
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+
+  const handleLoginFormSubmit = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, loginData.email, loginData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setLoggedInUser(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  };
+
+  useEffect(() => {
+    if (loggedInUser) {
+      navigate("/home");
+    }
+  }, [loggedInUser]);
+
+  const handleLoginFormInput = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSignUpButton = () => {
+    navigate("/registration");
+    };
+
+
     return (
         <div className="w-full h-screen flex item-start bg-gradient-to-r from-black via-gray-700 to-gray-800">
             <div className=" left-screen relative w-50 h-full flex flex-col overflow-hidden">
@@ -24,27 +64,33 @@ const Login = () => {
                 </div>
                 <div className="w-full flex flex-col items-center">
                     <div className="w-3/4 flex flex-col">
-                        <input
-                            type="email"
-                            placeholder="E-mail"
-                            className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105" />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-2 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105" />
+                    <input
+  type="email"
+  name="email"
+  value={loginData.email}
+  onChange={handleLoginFormInput}
+  className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-4 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
+/>
+<input
+  type="password"
+  name="password"
+  value={loginData.password}
+  onChange={handleLoginFormInput}
+  className="opacity-70 w-full text-lg font-quicksand text-black py-3 border-b border-white outline-none focus:outline-none px-4 my-2 bg-transparent rounded-2xl transition-transform duration-300 focus:scale-105"
+/>
 
                     </div>
                     <div className="w-3/4 flex items-center justify-end">
                         <p className="text-lg font-quicksand text-white underline underline-offset-2 my-2 cursor-pointer ">Forgot Password?</p>
                     </div>
                     <div className="w-full flex flex-col  items-center justify-center">
-                        <button className="w-3/4 text-white my-20 bg-[#db6221] rounded-2xl py-3 text-center flex items-center justify-center text-3xl hover:bg-[#e6956a]" onClick={()=>navigate("/home")}>
+                        <button className="w-3/4 text-white my-20 bg-[#db6221] rounded-2xl py-3 text-center flex items-center justify-center text-3xl hover:bg-[#e6956a]" onClick={handleLoginFormSubmit}>
                             Log In
                         </button>
                     </div>
 
                     <div className="w-full flex p-0 items-center justify-center ">
-                        <p className="text-lg font-quicksand text-white">Don't have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer"  onClick={()=>navigate("/registration")}>Sign up</span></p>
+                        <p className="text-lg font-quicksand text-white">Don't have an account? <span className="font-semibold underline underline-offset-2 cursor-pointer"  onClick={handleSignUpButton}>Sign up</span></p>
                     </div>
 
                 </div>

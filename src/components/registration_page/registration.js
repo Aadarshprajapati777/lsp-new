@@ -43,7 +43,6 @@ function Registration() {
     email: "",
     confirmPassword: "",
     pic: "",
-
   });
 
   const writeUserData = async (data) => {
@@ -63,7 +62,6 @@ function Registration() {
         confirmPassword: data.confirmPassword,
         profession: data.profession,
         imageUrl: imageRef.fullPath,
-
       });
 
       console.log("User data written successfully");
@@ -203,7 +201,6 @@ function Registration() {
                 onChange={handleRegistrationFormInput}
                 value={data.confirmPassword}
                 required
-
               />
               <div className="flex">
                 <input
@@ -261,43 +258,13 @@ function Registration() {
             <div>
               <h2>Upload image</h2>
               <input
-                  type="file"
-                  name="profileImage"
-                  onChange={(e) => {
-                    setData({ ...data, pic: e.target.files[0] });
-                  }}
-                />
+                type="file"
+                name="profileImage"
+                onChange={(e) => {
+                  setData({ ...data, pic: e.target.files[0] });
+                }}
+              />
             </div>
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
           <button
             className="mx-auto mt-3 h-[50px] w-2/5 rounded-md bg-secondary font-quicksand text-2xl font-bold text-white opacity-80 hover:bg-[#313131]"
@@ -308,7 +275,7 @@ function Registration() {
           <div className="mt-4 flex w-full items-center justify-center">
             <p className="text-md font-quicksand text-black">
               Already have an account?{" "}
-              <span className="cursor-pointer font-semibold underline underline-offset-2">
+              <span className="cursor-pointer font-semibold underline underline-offset-2" onClick={()=>navigate("/")}>
                 Sign in
               </span>
             </p>
